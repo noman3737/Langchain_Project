@@ -4,11 +4,14 @@ from langchain_core.messages import HumanMessage, SystemMessage
 import os
 import streamlit as st
 import time
+from dotenv import load_dotenv
+
+load_dotenv()
 
 hugging_face_api_key = os.getenv("HF_TOKEN")
 
-# if not hugging_face_api_key:
-#     raise ValueError("❌ Missing HF_TOKEN. Please set it in your .env or repo secrets.")
+if not hugging_face_api_key:
+    raise ValueError("❌ Missing HF_TOKEN. Please set it in your .env or repo secrets.")
 
 MODEL_OPTIONS = [
     "HuggingFaceH4/zephyr-7b-beta",
